@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'django.contrib.admin',         # <-- verify that Django Admin app already present
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polling',
+    'polling',                      # <-- We already added this line
+    'blogging',                     # <-- NOW ADD THIS LINE
 ]
 
 MIDDLEWARE = [
