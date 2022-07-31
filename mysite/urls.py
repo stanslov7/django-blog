@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include  # Made sure to add imports of both django.url methods used
 
+# modified first line of urlpatterns as follows:
 urlpatterns = [
-    path('polling/', include('polling.urls')),  # <-- Added this
+    path('', include('blogging.urls')),  # <-- Added this in lesson 07
+    path('polling/', include('polling.urls')),  # <-- Added this in lesson 06
     path('admin/', admin.site.urls),
 ]
