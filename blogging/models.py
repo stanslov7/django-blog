@@ -13,3 +13,17 @@ class Post(models.Model):
     # added as first test for string representation
     def __str__(self):
         return self.title
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=128)
+    description = models.TextField(blank=True)
+    posts = models.ManyToManyField(Post, blank=True, related_name='categories')
+
+    # added to implement string repr same as with Post
+    def __str__(self):
+        return self.name
+
+    # added to prevent 'categorys' nomenclature
+    class Meta:
+        verbose_name_plural = 'Categories'
