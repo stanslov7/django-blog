@@ -6,15 +6,17 @@ from blogging.models import Post
 
 
 # Create your views here.
-def stub_view(request, *args, **kwargs):
-    body = "Stub View\n\n"
-    if args:
-        body += "Args:\n"
-        body += "\n".join(["\t%s" % a for a in args])
-    if kwargs:
-        body += "Kwargs:\n"
-        body += "\n".join(["\t%s: %s" % i for i in kwargs.items()])
-    return HttpResponse(body, content_type="text/plain")
+#=========================================================================
+#def stub_view(request, *args, **kwargs):
+#    body = "Stub View\n\n"
+#    if args:
+#        body += "Args:\n"
+#        body += "\n".join(["\t%s" % a for a in args])
+#    if kwargs:
+#        body += "Kwargs:\n"
+#        body += "\n".join(["\t%s: %s" % i for i in kwargs.items()])
+#    return HttpResponse(body, content_type="text/plain")
+#=========================================================================
 
 # and add this view
 #=========================================================================
@@ -42,6 +44,16 @@ def list_view(request):
     # This replaces most of our view with the render shortcut.
     # Remember though, all we did manually before is still happening.
 #=========================================================================
+
+# Added new view in "Our Detail View" section
+def detail_view(request, post_id):
+    published = Post.objects.exclude(published_date__exact=None)
+    try:
+        post = published.get(pk=post_id)
+    except Post.DoesNotExist:
+        raise Http404
+    context = {'post': post}
+    return render(request, 'blogging/detail.html', context)  # will add html file next
 
 
     #=========================================================================
